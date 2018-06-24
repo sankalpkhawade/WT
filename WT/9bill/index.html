@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html ng-app="billpayApp">
+<head>
+  <title>AngularJS First Application : Responding to User </title>
+    <script src="angular.min.js"></script>
+    <script>
+      var dataModel = {
+        customer: "Tintin",
+        items:[{ bill:"Electricity", status:false},
+               { bill:"Internet(Wi/fi)", status:false },
+               { bill:"Parking Charges", status:false },
+               { bill:"Phone", status:true},
+               { bill:"House Tax", status:true}]
+      };
+
+      var billpayApp = angular.module("billpayApp", []);
+
+      billpayApp.controller("billPayCtrl", function($scope){  /* first argument is name of Controller,
+	                                                             second is a function to be called to define
+	                                                             the functionality of controller*/
+
+      $scope.billpay = dataModel // property billpay on $scope service object, and assign model to it
+
+      $scope.dueBills = function() {  // dueBills is the behaviour
+      var counter = 0;
+      angular.forEach($scope.billpay.items, function(item){
+
+      if(!item.status) {counter++}  // checks if status is false, and then increases counter by one
+        });
+        return counter;
+      }
+
+      $scope.redFlag = function(){
+        return $scope.dueBills() < 2 ? "label-success" : "label-danger";
+      }
+
+      $scope.newBills = function(billName){
+        $scope.billpay.items.push({ bill: billName, status: false});
+                           // Adds new items to the model
+	  }
+
+      $scope.removeBills = function(rmvBills) {
+
+         $scope.billpay.items.splice($scope.billpay.items.indexOf(rmvBills), 1);
+
+            }
+
+      });
+   </script>
+
+   </head>
+<body ng-controller="billPayCtrl">
+    <div class="page-header">
+      <h1>{{billpay.customer}}'s Bills to Be Paid -
+        <span class="label "  ng-class="redFlag()" ng-hide="dueBills() == 0">
+          <!-- ng-hide hides element if the expression within is true -->
+
+          {{dueBills()}}  <!-- Behaviour is called using Parentheses, it gets data from the scope -->
+
+        </span></h1>
+
+    </div>
+    <div class="panel">
+        <div class="input-group">
+            <input class="form-control" ng-model="billName"/>
+			<!-- ng-model is used to create the specified property -->
+
+		   <span class="input-group-btn">
+                <button class="btn btn-danger"
+                 ng-click="newBills(billName)">+Add+</button>
+				 <!-- the directive ng-click executes the expression when click event is triggered -->
+		  </span>
+         </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Bill Name</th>
+                    <th>Status</th>
+                     <th>Status</th>
+                      <th>Close</th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in billpay.items">
+                <td>{{item.bill}}</td>
+                <td><input type="checkbox" ng-model="item.status"/></td>
+               <td>{{item.status}}</td>
+               <td><button type="button" ng-click="removeBills(item)">&times;</button></td>
+              </tr>
+           </tbody>
+        </table>
+    </div>
+</body>
+</html>

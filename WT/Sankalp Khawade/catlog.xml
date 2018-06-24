@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<catlog>
+	<book>
+	<id>01</id>
+	<author>Gamberdella, Mathew</author>
+	<title>XML Developer's Guide</title>
+	<price>500</price>
+	</book>
+	<book>
+	<id>02</id>
+	<author>R. S. Agrawal</author>
+	<title>Aptitude</title>
+	<price>770</price>
+	</book>
+	<book>
+	<id>03</id>
+	<author>Vivek Kulkarni</author>
+	<title>Theory Of Compution</title>
+	<price>250</price>
+	</book>
+	<book>
+	<id>04</id>
+	<author>Kres, Peer</author>
+	<title>Paradox Lost</title>
+	<price>495</price>
+	</book>
+	<book>
+	<id>05</id>
+	<author>Pankaj Bramhankar</author>
+	<title>Web Technology</title>
+	<price>625</price>
+	</book>
+	<book>
+	<id>06</id>
+	<author>Chetan Bhagat</author>
+	<title>Two States</title>
+	<price>325</price>
+	</book>	
+</catlog>

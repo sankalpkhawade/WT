@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Update Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica}
+
+form {border: 5px solid #f1f1f1; margin:10px 450px;}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 6px 10px;
+    margin: 2px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 10px 5px;
+    border: none;
+    cursor: pointer;
+    width: 90%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+</style>
+</head>
+
+<body align="center">
+	<img src="images/sinhgadlogo.jpeg" alt="Sinhgad Institutes">
+    <form action="update.php" method="post" onsubmit= "return validation()">
+	
+	
+	<marquee>Last date for registration is June 15</marquee>	
+	<h2> Registration Form </h2>
+    <h4> Update Details </h4>
+	<div align="center">
+	
+		<div>
+        <form action="update.php" method="post" onsubmit = "return validation()">
+                <div class="form-group">
+                    <label>Enter the name to be updated:</label>
+                    <input required type="text" name="update" id="update" class="form-control" autocomplete="off">
+             
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input required type="text" name="name" id="name" class="form-control" autocomplete="off">
+                    <span id="demo1"> </span>
+                
+
+                <div class="form-group">
+                    <label>Roll No:</label>
+                    <input required type="text" name="roll" id="roll" class="form-control" autocomplete="off">
+                    <span id="demo2"> </span>
+                </div>
+
+                <div class="form-group">
+                    <label>Class:</label>
+                    <input required type="text" name="class" id="class" class="form-control" autocomplete="off">
+                    <span id="demo3">  </span>
+                </div>
+
+                <div class="form-group">
+                    <label>Div:</label>
+                    <input reuired type="text" name="div" id="div" class="form-control" autocomplete="off">
+                    <span id="demo4"> </span>
+                </div>
+
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input required type="text" name="email" id="email" class="form-control" autocomplete="off">
+                    <span id="demo5"</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone:</label>
+                    <input required type="text" name="phone" id="phone" class="form-control" autocomplete="off">
+                    <span id="demo6"</span>
+                </div>
+            </form>
+		</div>
+    <label>
+      <input type="checkbox" checked="checked" name="remember">Remember me
+    </label>
+
+
+		<div>
+			<button type="submit" value="submit">UPDATE</button>
+			<button type="reset">RESET</button>
+		</div>
+ </form>
+
+</div>
+
+<script type="text/javascript">
+        
+        function validation(){
+
+            var name = document.getElementById('name').value;
+            var roll = document.getElementById('roll').value;
+            var clas = document.getElementById('class').value;
+            var div = document.getElementById('div').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value
+
+            if(( name.length < 3) || (name.length > 20)){
+                document.getElementById('demo1').innerHTML = " ** Name length should be between 2 and 20 ";
+                return false;
+            }
+
+            if(!isNaN(name)){
+                document.getElementById('demo1').innerHTML = " ** Please enter character";
+                return false;
+            }
+
+            if((roll<0) || (roll > 60)){
+                document.getElementById('demo2').innerHTML = " ** Roll No. should be between 1 and 60";
+                return false;
+            }
+
+            if((clas<1)||(clas>4)){
+                document.getElementById('demo3').innerHTML = " ** Invalid Class";
+                return false;
+            }
+
+            if((div!='A')&&(div!='B')){
+                document.getElementById('demo4').innerHTML = " ** Invalid Division";
+                return false;
+            }
+
+            if(email.indexOf('@') <= 0){
+                document.getElementById('demo5').innerHTML = " ** Please fill the email id in proper format @ ";
+                return false;
+            }
+
+            if((email.charAt(email.length-4)!='.') && (email.charAt(email.length-3)!='.')){
+
+                document.getElementById('demo5').innerHTML = " ** Please fill the email id in proper format . ";
+                return false;
+            } 
+
+            if(phone.length!=10){
+                document.getElementById('demo6').innerHTML = " ** Mobile number should be 10 digits ";
+                return false;
+            }
+            if(isNaN(mobileno)){
+                phone.getElementById('demo6').innerHTML = " ** Mobile number should conatins only digits ";
+                return false;
+            }
+
+
+
+        }
+
+    </script>
+<hr>
+
+
+</body>
+
+</html>
+
